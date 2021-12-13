@@ -26,7 +26,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: services/identity-service
-          file: build/package/identity-service/Dockerfile
+          file: services/identity-service/build/package/identity-service/Dockerfile
           tags: strider2038/otus-micro-4-identity-service:latest, strider2038/otus-micro-4-identity-service:${{ env.APP_VERSION }}
           pull: true
           push: true
@@ -36,7 +36,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: services/identity-service
-          file: build/package/migrations/Dockerfile
+          file: services/identity-service/build/package/migrations/Dockerfile
           tags: strider2038/otus-micro-4-migrations:latest, strider2038/otus-micro-4-migrations:${{ env.APP_VERSION }}
           pull: true
           push: true
@@ -46,7 +46,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: services/echo-service
-          file: build/package/echo-service/Dockerfile
+          file: services/echo-service/build/package/echo-service/Dockerfile
           tags: strider2038/otus-micro-4-echo-service:latest, strider2038/otus-micro-4-echo-service:${{ env.APP_VERSION }}
           pull: true
           push: true
