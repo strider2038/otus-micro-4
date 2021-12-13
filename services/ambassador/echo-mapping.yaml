@@ -1,0 +1,10 @@
+apiVersion: getambassador.io/v2
+kind: Mapping
+metadata:
+  name: echo-mapping
+spec:
+  hostname: "*"
+  prefix: "/api/v1/echo-user"
+  rewrite: "/api/v1/echo-user"
+  remainder: "/api/v1/echo-user"
+  service: echo-service:8000
