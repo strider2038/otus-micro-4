@@ -5,16 +5,21 @@
 ### Запуск приложения
 
 ```shell
+# запуск minikube
+# версия k8s v1.19, на более поздних есть проблемы с установкой ambassador
+minikube start --cpus=6 --memory=8g --vm-driver=virtualbox --cni=flannel --kubernetes-version="v1.19.0"
+
 kubectl create namespace otus
 
 # установка ambassador
 helm install aes datawire/ambassador -f deploy/ambassador-values.yaml
-# применение настроек ambassador
-kubectl apply -f services/ambassador/
 
 ## запуск проекта
 helm install --wait -f deploy/identity-values.yaml identity-service ./services/identity-service/deployments/identity-service --atomic
 helm install --wait echo-service ./services/echo-service/deployments/echo-service --atomic
+
+# применение настроек ambassador
+kubectl apply -f services/ambassador/
 ```
 
 ### Тестирование
